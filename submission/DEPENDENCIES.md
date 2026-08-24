@@ -8,12 +8,22 @@ one deliberately.
 
 | Library | Version | Why |
 |---|---|---|
-| *example* | *2.1.0* | *replace this row* |
+| *(none)* | | `requirements-extra.txt` is empty. Everything the pipeline and agent need — `httpx` for EDGAR requests, `lxml` for namespace-aware XML parsing, `pyarrow` for the Parquet tables, `openai` for the LLM client, `python-dotenv` for config — was already available in the frozen `requirements.txt`, so nothing extra was added. |
 
 ## Anything you considered and rejected
 
-Optional, but the more interesting half. A library you looked at and decided against —
-and why — says more than the ones you kept.
+- **A 13F-parsing library (e.g. `sec-edgar-api`/`edgartools`-style wrappers).** Rejected —
+  the challenge is graded on the parsing itself, and a wrapper would hide exactly the
+  namespace and duplicate-CUSIP edge cases (`submission/eda.py`) the schema depends on
+  getting right. Hand-rolling the `lxml` traversal in `pipeline/structure.py` keeps every
+  field's provenance explainable.
+- **`rapidfuzz` for CIK name matching.** Considered for `pipeline/source.py::resolve_cik`,
+  but the standard-library `difflib.SequenceMatcher` was accurate enough at the roster's
+  scale (20 names) and avoided one more dependency to pin and justify.
+- **`pandas` for building the Parquet tables.** Rejected in favor of building rows as
+  plain dicts and handing them straight to `pyarrow.Table.from_pylist` with an explicit
+  schema — one less layer between the parsed values and the exact Arrow types the schema
+  requires.
 
 ## Note
 

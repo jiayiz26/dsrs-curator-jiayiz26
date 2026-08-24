@@ -31,17 +31,17 @@ Mark what you completed. Partial work still gets read.
 
 ## Checklist
 
-- [ ] `python check_submission.py` passes
-- [ ] Repo is **private** and `dsrsBOT` is a collaborator with Read access
+- [x] `python check_submission.py` passes
+- [x] Repo is **private** and `dsrsBOT` is a collaborator with Read access (invite sent; awaiting the bot's acceptance)
 - [ ] Video uploaded to MediaSpace, visibility **Unlisted**, link tested
 - [ ] Repository URL submitted at <https://ikompete.dsrs.illinois.edu/competition/16>
-- [ ] `python verify.py` passes
+- [x] `python verify.py` passes
 - [ ] Pipeline run twice; output is byte-identical
-- [ ] `output/filings.parquet`, `output/holdings.parquet` committed
-- [ ] `output/filers.csv`, `output/filings/`, `submission/eda.py` committed
-- [ ] `DEPENDENCIES.md`, `AI_USAGE.md`, and `ASSUMPTIONS.md` filled in
-- [ ] No API keys, tokens, or credentials committed
-- [ ] Frozen files unmodified
+- [x] `output/filings.parquet`, `output/holdings.parquet` committed
+- [x] `output/filers.csv`, `output/filings/`, `submission/eda.py` committed
+- [x] `DEPENDENCIES.md`, `AI_USAGE.md`, and `ASSUMPTIONS.md` filled in
+- [x] No API keys, tokens, or credentials committed
+- [x] Frozen files unmodified
 
 ## Anything we should know
 
